@@ -1,7 +1,7 @@
 {
-  "name": "vuejs-3-and-webpack-basic-setup",
+  "name": "vuejs-3-and-pinia",
   "version": "1.0.0",
-  "description": "This project presents a basic template with the minimum configuration that VueJS 3 and WebPack should have in the client side.",
+  "description": "This project presents a basic template with the minimum configuration that VueJS 3 and Pinia.",
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
@@ -29,6 +29,7 @@
     "@babel/preset-env": "^7.18.10",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
+    "pinia": "^2.0.23",
     "vue": "^3.2.37",
     "vue-loader": "^17.0.0",
     "vuex": "^4.0.2",
