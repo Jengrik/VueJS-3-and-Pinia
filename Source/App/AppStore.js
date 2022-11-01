@@ -1,28 +1,34 @@
-//* Import Necessary Methods from Vuex
-import { createStore } from 'vuex'
+//* Import Necessary Methods from Pinia
+import { defineStore } from 'pinia'
 
 //* Store Instance Definition
-const VueStore = createStore({
-  state () {
-    return {
+const useAppStore = defineStore('App' ,{
+  state: () => {
     //* State
-    //  It is a plain object to declare the state of the module,
-    //  then that state object will be shared by reference and 
-    //  cause cross store/module state pollution when it's mutated
+    //  It is a plain object to declare the default state of the application.
+    return {
+      Tasks: [],
     }
-  },
-  mutations: {
-    //* Mutations
-    //  The only way to actually change state in a Vuex store is by 
-    //  committing a mutation. Vuex mutations are very similar to 
-    //  events: each mutation has a string type and a handler. 
   },
   actions: {
     //* Actions:
-    //  Actions are similar to mutations, the differences being that:
-    //    1. Instead of mutating the state, actions commit mutations.
-    //    2. Actions can contain arbitrary asynchronous operations.
+    //  Like getters, actions get access to the whole store instance through 
+    //  this keyword. Unlike getters, actions can be asynchronous, you can await
+    //  inside of actions any API call or even other actions! 
+    AddTask(Task){
+      this.Tasks.push(Task);
+    }
+  },
+  getters: {
+    //* Getters
+    //  Getters are exactly the equivalent of computed values for the state of a Store.
+    //  Usually they are declared as Arrow Functions with State as their Input Parameter.
+    doneTask: (state) => {
+      return {
+        DoneTasks: state.Tasks.filter(Task => Task.done),
+      }
+    },
   },
 });
 
-export default VueStore;
+export { useAppStore };
